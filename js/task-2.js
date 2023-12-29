@@ -28,17 +28,9 @@ const images = [
   },
 ];
 
+const galleryHTML = images.map((image) => {
+  return `<li class="gallery-item"><img src="${image.url}" alt="${image.alt}" class="gallery-image"></li>`;
+}).join('');
+
 const galleryList = document.querySelector('.gallery');
-
-images.forEach((image) => {
-  const listItem = document.createElement('li');
-  listItem.classList.add('gallery-item');
-
-  const imgElement = document.createElement('img');
-  imgElement.src = image.url;
-  imgElement.alt = image.alt;
-  imgElement.classList.add('gallery-image');
-
-  listItem.appendChild(imgElement);
-  galleryList.appendChild(listItem);
-});
+galleryList.innerHTML = galleryHTML;
